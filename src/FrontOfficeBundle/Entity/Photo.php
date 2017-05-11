@@ -37,7 +37,7 @@ class Photo
     * @var string
     *
   
-    * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Article", inversedBy="photo")
+    * @ORM\ManyToOne(targetEntity="FrontOfficeBundle\Entity\Article", inversedBy="photo", cascade={"remove"})
     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
     *
     */

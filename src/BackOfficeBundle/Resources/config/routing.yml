@@ -1,3 +1,11 @@
 back_office_homepage:
     path:     /
     defaults: { _controller: BackOfficeBundle:Home:homepage }
+
+back_office_article_create:
+    path:     /article/{origin}
+    defaults: { _controller: BackOfficeBundle:Article:create}
+    requirements:
+        id: "[0-9]+"
+
+

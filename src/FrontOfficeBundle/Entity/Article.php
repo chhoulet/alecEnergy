@@ -63,12 +63,18 @@ class Article
     private $main;
 
     /**
-     * @var \DateTime
+     * @var bigint
      *
-     * @ORM\Column(name="dateCreated", type="datetime")
-     * @Assert\DateTime()
+     * @ORM\Column(name="dateCreated", type="bigint")
      */
     private $dateCreated;
+
+    /**
+     * @var bigint
+     *
+     * @ORM\Column(name="dateDeleted", type="bigint", nullable=true)
+     */
+    private $dateDeleted;
 
     /**
      * @var int
@@ -76,6 +82,13 @@ class Article
      * @ORM\Column(name="origin", type="smallint")
      */
     private $origin;
+
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="active", type="smallint")
+     */
+    private $active=1;
 
      /**
      *
@@ -254,5 +267,53 @@ class Article
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    /**
+     * Set active
+     *
+     * @param integer $active
+     *
+     * @return Article
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return integer
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set dateDeleted
+     *
+     * @param \DateTime $dateDeleted
+     *
+     * @return Article
+     */
+    public function setDateDeleted($dateDeleted)
+    {
+        $this->dateDeleted = $dateDeleted;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeleted
+     *
+     * @return \DateTime
+     */
+    public function getDateDeleted()
+    {
+        return $this->dateDeleted;
     }
 }
