@@ -1,3 +1,27 @@
 front_office_homepage:
     path:     /
-    defaults: { _controller: FrontOfficeBundle:Default:index }
+    defaults: { _controller: FrontOfficeBundle:Home:homepage }
+
+front_office_article_presentation:
+    path:     /presentation/{origin} 
+    defaults: { _controller: FrontOfficeBundle:Article:presentation}
+    requirements:
+        origin: "[0-9]+"
+
+front_office_article_partenaire:
+    path:     /partenaire/{origin} 
+    defaults: { _controller: FrontOfficeBundle:Article:partenaire}
+    requirements:
+        origin: "[0-9]+"
+
+front_office_article_presse:
+    path:     /presse/{origin} 
+    defaults: { _controller: FrontOfficeBundle:Article:presse}
+    requirements:
+        origin: "[0-9]+"
+
+front_office_article_collectivite:
+    path:     /collectivite/{origin} 
+    defaults: { _controller: FrontOfficeBundle:Article:collectivite}
+    requirements:
+        origin: "[0-9]+"
