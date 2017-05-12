@@ -196,10 +196,14 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-      $( function() {
-        $( ".js-datepicker" ).datepicker();
-      } );
+      $(document).ready(function() {
+        $('.js-datepicker').datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+    });
     </script>
+
+    <script src="https://use.fontawesome.com/4310d05301.js"></script>
 
 </body>
 

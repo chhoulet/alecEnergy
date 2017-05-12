@@ -20,13 +20,25 @@ class ArticleController extends Controller
 
 		if($form->isSubmitted() && $form->isValid())
 		{
-			$datePubli=$article->getDateCreated();			
+			$datePubli=$article->getDateCreated();	
+			$dateExpi=$article->getDateDeleted();
 
 			if(!$datePubli)
 			{
 				$dateCreated=new \DateTime();
 				$date=$dateCreated->getTimeStamp();
 				$article->setDateCreated($date);				
+			}
+			else
+			{
+				$date=$datePubli->getTimeStamp();
+				$article->setDateCreated($date);
+			}
+
+			if($dateExpi)
+			{
+				$date=$dateExpi->getTimeStamp();
+				$article->setDateDeleted($date);				
 			}
 
 			$article->setOrigin($origin);
@@ -42,4 +54,6 @@ class ArticleController extends Controller
 			array('form'=>$form->createView(),
 				  'origin'=>$origin));
 	}
+
+
 }

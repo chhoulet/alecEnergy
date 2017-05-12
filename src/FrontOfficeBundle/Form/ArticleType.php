@@ -21,16 +21,18 @@ class ArticleType extends AbstractType
                                                         'required'=>false,
                                                         'attr'=>['class'=>'form-control']))
                 ->add('main', TextareaType::class, array('label'=>'Texte',
-                                                         'attr'=>['class'=>'form-control']))
+                                                         'attr'=>['class'=>'tinymce']))
                 ->add('dateCreated', DateType::class, array('label'=>'Date de parution',
                                                             'required'=>false,
                                                             'widget' => 'single_text',
-                                                            'html5'=>false,
+                                                            'format' => 'dd-MM-yyyy',
+                                                            'html5'=>false,                                                           
                                                             'attr' => ['class' => 'js-datepicker']))
                 ->add('dateDeleted', DateType::class, array('label'=>'Date d\'expiration',
                                                             'required'=>false,
                                                             'widget' => 'single_text',
-                                                            'html5'=>false,
+                                                            'format' => 'dd-MM-yyyy',
+                                                            'html5'=>false,                                                           
                                                             'attr' => ['class' => 'js-datepicker']))
                 ->add('submit', SubmitType::class, array('label'=>'Enregistrer',
                                                          'attr' =>array('class'=>'btn btn-success')));

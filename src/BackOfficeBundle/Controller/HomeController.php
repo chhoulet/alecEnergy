@@ -8,6 +8,11 @@ class HomeController extends Controller
 {
     public function homepageAction()
     {
-        return $this->render('BackOfficeBundle:Home:homepage.html.twig');
+    	$em=$this->getDoctrine()->getManager();
+
+		$articles=$em->getRepository('FrontOfficeBundle:Article')->findByActive(1);
+
+        return $this->render('BackOfficeBundle:Home:homepage.html.twig',
+        	array('articles'=>$articles));
     }
 }
