@@ -138,7 +138,8 @@
                                                 <h4>{{ article.title|title }}</h4>
                                                 <p>{{ article.main|raw}}</p>
                                                 <a href="{{ path('back_office_article_desactivate',{idArticle:article.id}) }}" title="Désactiver cet article" onclick="return(confirm('Etes-vous sûr de vouloir désactiver cet article ?'))"><button class="btn btn-warning">Désactiver</button></a>
-                                                 <a href="{{ path('back_office_article_activate',{idArticle:article.id}) }}" title="Désactiver cet article" onclick="return(confirm('Etes-vous sûr de vouloir activer cet article ?'))"><button class="btn btn-warning">Activer</button></a>
+                                                <!--  <a href="{{ path('back_office_article_activate',{idArticle:article.id}) }}" title="Activer cet article" onclick="return(confirm('Etes-vous sûr de vouloir activer cet article ?'))"><button class="btn btn-warning">Activer</button></a> -->
+                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}

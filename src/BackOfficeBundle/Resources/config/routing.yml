@@ -20,6 +20,12 @@ back_office_article_desactivate:
     requirements:
         idArticle: "[0-9]+"
 
+back_office_article_delete:
+    path:     /article/delete/{idArticle}
+    defaults: { _controller: BackOfficeBundle:Article:delete}
+    requirements:
+        idArticle: "[0-9]+"
+
 
 
 

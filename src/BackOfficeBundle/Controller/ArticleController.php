@@ -126,4 +126,40 @@ class ArticleController extends Controller
 			throw new NotFoundHttpException("Cet article n\'existe pas !");
 		}	
 	}
+
+
+	public function deleteAction(Request $request, $idArticle)
+	{
+		$em=$this->getDoctrine()->getManager();
+		$session=$request->getSession();
+
+		if($idArticle)
+		{
+			$listArticles=$em->getRepository('FrontOfficeBundle:Article')->findAll();
+			$listIdArticles=[];
+			foreach($listArticles as $article)
+			{
+				$id=$article->getId();
+				$listIdArticles[]=$id;
+			}
+
+			if(in_array($idArticle, $listIdArticles))
+			{
+				$articleDeleted=$em->getRepository('FrontOfficeBundle:Article')->find($idArticle);
+				$em->remove($articleDeleted);
+				$em->flush();
+
+				$session->getFlashBag()->add('succes', $articleDeleted->getTitle(). ' est définitivement supprimé !');
+				return $this->redirectToRoute('back_office_homepage');
+			}
+			else
+			{
+				throw new NotFoundHttpException("Cet article n\'existe pas !");
+			}
+		}
+		else
+		{
+			throw new NotFoundHttpException("Cet article n\'existe pas !");
+		}	
+	}
 }
