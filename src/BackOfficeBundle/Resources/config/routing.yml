@@ -8,5 +8,19 @@ back_office_article_create:
     requirements:
         id: "[0-9]+"
 
+back_office_article_activate:
+    path:     /article/activate/{idArticle}
+    defaults: { _controller: BackOfficeBundle:Article:activate}
+    requirements:
+        idArticle: "[0-9]+"
+
+back_office_article_desactivate:
+    path:     /article/desactivate/{idArticle}
+    defaults: { _controller: BackOfficeBundle:Article:desactivate}
+    requirements:
+        idArticle: "[0-9]+"
+
+
+
 
 
