@@ -2,6 +2,11 @@ back_office_homepage:
     path:     /
     defaults: { _controller: BackOfficeBundle:Home:homepage }
 
+# Gestion des articles:
+back_office_article_list:
+    path:     /article/list 
+    defaults: { _controller: BackOfficeBundle:Article:list}
+
 back_office_article_create:
     path:     /article/{origin}
     defaults: { _controller: BackOfficeBundle:Article:create}
@@ -25,6 +30,14 @@ back_office_article_delete:
     defaults: { _controller: BackOfficeBundle:Article:delete}
     requirements:
         idArticle: "[0-9]+"
+
+#Gestion des photos:
+back_office_photo_upload:
+    path:     /photo/{idArticle}
+    defaults: { _controller: BackOfficeBundle:Photo:upload}
+    requirements:
+        idArticle: "[0-9]+"
+
 
 
 

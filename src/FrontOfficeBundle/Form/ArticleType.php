@@ -35,7 +35,9 @@ class ArticleType extends AbstractType
                                                             'html5'=>false,                                                           
                                                             'attr' => ['class' => 'js-datepicker']))
                 ->add('submit', SubmitType::class, array('label'=>'Enregistrer',
-                                                         'attr' =>array('class'=>'btn btn-success')));
+                                                         'attr' =>array('class'=>'btn btn-success')))
+                ->add('saveAndAdd', SubmitType::class, array('label' => 'Enregistrer et ajouter une image',
+                                                             'attr' =>array('class'=>'btn btn-success')));
     }
     
     

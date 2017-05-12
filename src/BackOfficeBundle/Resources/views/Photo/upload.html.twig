@@ -1,0 +1,32 @@
+{% extends "::baseAdmin.html.twig" %}
+
+	{% block title %}Uploader une photo{% endblock %}
+
+	{% block body %}
+
+		<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                    	Uploader une photo et l'ajouter à {{ article.title|title }}                   
+                    </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+        <div class="row">
+        	<div class="col-lg-12">        		
+				{{ form_start(form)}}
+				{{ form_row(form.filename)}}								
+				
+				<div class="col-md-6" style="text-align:center;margin-top:25px;margin-bottom:25px;">
+					{{ form_row(form.submit)}}
+				</div>
+				<div class="col-md-6" style="text-align:center;margin-top:25px;margin-bottom:25px;">
+					{{ form_row(form.saveAndAdd)}}
+				</div>
+				{{ form_end(form)}}
+
+			</div>
+		</div>
+
+	{% endblock %}

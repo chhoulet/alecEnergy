@@ -45,15 +45,38 @@ class ArticleController extends Controller
 			$article->setOrigin($origin);
 
 			$em->persist($article);
-			$em->flush();
+			$em->flush();			
 
 			$session->getFlashBag()->add('succes', $article->getTitle() . ' est bien créé et ajouté en base !');
-			return $this->redirectToRoute('back_office_homepage');
+
+			/*$nextAction = $form->get('saveAndAdd')->isClicked()
+		        ? 'back_office_photo_upload', array('idArticle'=>$article->getId())
+		        : 'back_office_homepage';*/
+
+		    if($form->get('saveAndAdd')->isClicked())
+		    {
+		    	return $this->redirectToRoute('back_office_photo_upload', array('idArticle'=>$article->getId()));
+		    }
+		    else
+		    {
+		    	return $this->redirectToRoute('back_office_homepage');
+		    }
+			
 		}
 
 		return $this->render('BackOfficeBundle:Article:create.html.twig', 
 			array('form'=>$form->createView(),
 				  'origin'=>$origin));
+	}
+
+
+	public function listAction()
+	{
+		$em=$this->getDoctrine()->getManager();
+		$articles=$em->getRepository('FrontOfficeBundle:Article')->findAll();
+
+		return $this->render('BackOfficeBundle:Article:articles.html.twig',
+			array('articles'=>$articles));
 	}
 
 	public function activateAction(Request $request, $idArticle)
