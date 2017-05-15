@@ -52,6 +52,7 @@
                                          <td>
                                         	 <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a>
                                         	 <a href="{{ path('back_office_article_update',{idArticle:article.id}) }}" title="Mettre à jour cet article ?"><button class="btn btn-info">Mise à jour</button></a>
+                                             <a href="{{ path('back_office_article_edit',{idArticle:article.id}) }}"><button class="btn btn-primary">Editer</button></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

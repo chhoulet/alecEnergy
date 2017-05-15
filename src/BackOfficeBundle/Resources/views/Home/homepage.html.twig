@@ -136,10 +136,13 @@
                                         {% for article in articles %}
                                             {% if article.origin == 1 %}
                                                 <h4>{{ article.title|title }}</h4>
-                                                <p>{{ article.main|raw}}</p>
+                                                <p>{{ article.main[:145]|raw}}</p>
+                                                {% if article.main|length > 145 %}
+                                                    <a href="#" title="Voir le détail">Lire ...</a><br>
+                                                {% endif %}
                                                 <a href="{{ path('back_office_article_desactivate',{idArticle:article.id}) }}" title="Désactiver cet article" onclick="return(confirm('Etes-vous sûr de vouloir désactiver cet article ?'))"><button class="btn btn-warning">Désactiver</button></a>
-                                                <!--  <a href="{{ path('back_office_article_activate',{idArticle:article.id}) }}" title="Activer cet article" onclick="return(confirm('Etes-vous sûr de vouloir activer cet article ?'))"><button class="btn btn-warning">Activer</button></a> -->
-                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a><br>
+                                                <a href="{{ path('back_office_article_edit',{idArticle:article.id}) }}"><button class="btn btn-primary">Editer</button></a>                                
+                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -150,9 +153,13 @@
                                         {% for article in articles %}
                                             {% if article.origin == 2 %}
                                                 <h4>{{ article.title|title }}</h4>
-                                                <p>{{ article.main|raw }}</p>
+                                                <p>{{ article.main[:145]|raw }}</p>
+                                                {% if article.main|length > 145 %}
+                                                    <a href="#" title="Voir le détail">Lire ...</a><br>
+                                                {% endif %}
                                                 <a href="{{ path('back_office_article_desactivate',{idArticle:article.id}) }}" title="Désactiver cet article" onclick="return(confirm('Etes-vous sûr de vouloir désactiver cet article ?'))"><button class="btn btn-warning">Désactiver</button></a>
-                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a><br>
+                                                <a href="{{ path('back_office_article_edit',{idArticle:article.id}) }}"><button class="btn btn-primary">Editer</button></a>
+                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -163,9 +170,13 @@
                                         {% for article in articles %}
                                             {% if article.origin == 3 %}
                                                 <h4>{{ article.title|title }}</h4>
-                                                <p>{{ article.main|raw }}</p>
+                                                <p>{{ article.main[:145]|raw }}</p>
+                                                {% if article.main|length > 145 %}
+                                                    <a href="#" title="Voir le détail">Lire ...</a><br>
+                                                {% endif %}
                                                 <a href="{{ path('back_office_article_desactivate',{idArticle:article.id}) }}" title="Désactiver cet article" onclick="return(confirm('Etes-vous sûr de vouloir désactiver cet article ?'))"><button class="btn btn-warning">Désactiver</button></a>
-                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a><br>
+                                                <a href="{{ path('back_office_article_edit',{idArticle:article.id}) }}"><button class="btn btn-primary">Editer</button></a>
+                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -176,9 +187,13 @@
                                         {% for article in articles %}
                                             {% if article.origin == 4 %}
                                                 <h4>{{ article.title|title }}</h4>
-                                                <p>{{ article.main|raw }}</p>
+                                                <p>{{ article.main[:145]|raw }}</p>
+                                                {% if article.main|length > 145 %}
+                                                    <a href="#" title="Voir le détail">Lire ...</a><br>
+                                                {% endif %}
                                                 <a href="{{ path('back_office_article_desactivate',{idArticle:article.id}) }}" title="Désactiver cet article" onclick="return(confirm('Etes-vous sûr de vouloir désactiver cet article ?'))"><button class="btn btn-warning">Désactiver</button></a>
-                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a><br>
+                                                <a href="{{ path('back_office_article_edit',{idArticle:article.id}) }}"><button class="btn btn-primary">Editer</button></a>
+                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -189,9 +204,13 @@
                                         {% for article in articles %}
                                             {% if article.origin == 5 %}
                                                 <h4>{{ article.title|title }}</h4>
-                                                <p>{{ article.main|raw }}</p>
+                                                <p>{{ article.main[:145]|raw }}</p>
+                                                {% if main|length > 145 %}
+                                                    <a href="#" title="Voir le détail">Lire ...</a><br>
+                                                {% endif %}
                                                 <a href="{{ path('back_office_article_desactivate',{idArticle:article.id}) }}" title="Désactiver cet article" onclick="return(confirm('Etes-vous sûr de vouloir désactiver cet article ?'))"><button class="btn btn-warning">Désactiver</button></a>
-                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a><br>
+                                                <a href="{{ path('back_office_article_edit',{idArticle:article.id}) }}"><button class="btn btn-primary">Editer</button></a>
+                                                <a href="{{ path('back_office_article_delete',{idArticle:article.id}) }}" title="Supprimer définitivement cet article ?" onclick="return(confirm('Etes-vous sûr de vouloir supprimer définitivement cet article ?'))"><button class="btn btn-danger">Supprimer</button></a>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}

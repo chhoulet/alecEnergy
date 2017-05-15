@@ -273,4 +273,50 @@ class ArticleController extends Controller
 			array('form'=>$form->createView(),
 			 	  'article'=>$articleUpdated));
 	}
+
+	public function editAction($idArticle)
+	{
+		$em=$this->getDoctrine()->getManager();
+		
+		if($idArticle)
+		{
+			$listArticles=$em->getRepository('FrontOfficeBundle:Article')->findAll();
+			$listIdArticles=[];
+			foreach($listArticles as $article)
+			{
+				$id=$article->getId();
+				$listIdArticles[]=$id;
+			}
+
+			if(in_array($idArticle, $listIdArticles))
+			{
+				$articleEdited=$em->getRepository('FrontOfficeBundle:Article')->find($idArticle);	
+				$dateCreated=$articleEdited->getDateCreated();
+				$dateDeleted=$articleEdited->getDateDeleted();
+
+				$dateCreatedToSet=new \DateTime();
+				$dateDeletedToSet=new \DateTime();
+				$dateFormat='d-M-Y';
+				$dateCreatedToSet->format($dateFormat);
+				$dateDeletedToSet->format($dateFormat);
+
+				$dateCreatedToSet->setTimeStamp($dateCreated);
+				$dateDeletedToSet->setTimeStamp($dateDeleted);
+
+				$articleEdited->setDateCreated($dateCreatedToSet);
+				$articleEdited->setDateDeleted($dateDeletedToSet);
+
+				return $this->render('BackOfficeBundle:Article:edit.html.twig', 
+					array('articleEdited'=>$articleEdited));
+			}
+			else
+			{
+				throw new NotFoundHttpException("Cet article n\'existe pas !");
+			}
+		}
+		else
+		{
+			throw new NotFoundHttpException("Cet article n\'existe pas !");
+		}	
+	}
 }

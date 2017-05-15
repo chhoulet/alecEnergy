@@ -37,6 +37,12 @@ back_office_article_update:
     requirements:
         idArticle: "[0-9]+"
 
+back_office_article_edit:
+    path:     /article/edit/{idArticle}
+    defaults: { _controller: BackOfficeBundle:Article:edit}
+    requirements:
+        idArticle: "[0-9]+"
+
 #Gestion des photos:
 back_office_photo_upload:
     path:     /photo/{idArticle}
