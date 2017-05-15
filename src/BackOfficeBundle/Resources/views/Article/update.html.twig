@@ -2,17 +2,7 @@
 
 	{% block title %}
 
-		{% if origin == 1 %}
-			Créer un article en page d'accueil
-		{% elseif origin == 2 %}
-			Créer un article de présentation
-		{% elseif origin == 3 %}
-			Créer un article partenaire
-		{% elseif origin == 4 %}
-			Créer un article dans la revue de presse
-		{% elseif origin == 5 %}
-			Créer un article collectivité
-		{% endif %}
+		Editer {{ article.title|title }}
 
 	{% endblock %}
 
@@ -21,17 +11,7 @@
 		<div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                	{% if origin == 1 %}
-						Créer un article en page d'accueil
-					{% elseif origin == 2 %}
-						Créer un article de présentation
-					{% elseif origin == 3 %}
-						Créer un article partenaire
-					{% elseif origin == 4 %}
-						Créer un article dans la revue de presse
-					{% elseif origin == 5 %}
-						Créer un article collectivité
-					{% endif %}                    
+                	Mise à jour {{ article.title|title }}                    
                 </h1>
             </div>
             <!-- /.col-lg-12 -->

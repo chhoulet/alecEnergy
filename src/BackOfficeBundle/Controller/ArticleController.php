@@ -185,4 +185,92 @@ class ArticleController extends Controller
 			throw new NotFoundHttpException("Cet article n\'existe pas !");
 		}	
 	}
+
+
+	public function updateAction(Request $request, $idArticle)
+	{
+		$em=$this->getDoctrine()->getManager();
+		$session=$request->getSession();
+
+		if($idArticle)
+		{
+			$listArticles=$em->getRepository('FrontOfficeBundle:Article')->findAll();
+			$listIdArticles=[];
+			foreach($listArticles as $article)
+			{
+				$id=$article->getId();
+				$listIdArticles[]=$id;
+			}
+
+			if(in_array($idArticle, $listIdArticles))
+			{
+				$articleUpdated=$em->getRepository('FrontOfficeBundle:Article')->find($idArticle);
+				$dateStamp=$articleUpdated->getDateCreated();
+				$dateExpi=$articleUpdated->getDateDeleted();
+
+				if($dateStamp !='')
+				{
+					// Transformer le timestamp en date:
+					$timestamp = $dateStamp;
+					$datetimeFormat = 'd-M-Y';
+
+					$date = new \DateTime();					
+					$date->setTimestamp($timestamp);
+					$date->format($datetimeFormat);
+					$articleUpdated->setDateCreated($date);				
+				}
+
+				if($dateExpi !='')
+				{
+					// Transformer le timestamp en date:
+					$timestamp = $dateExpi;
+					$datetimeFormat = 'd-M-Y';
+
+					$dateT = new \DateTime();
+					
+					$dateT->setTimestamp($timestamp);
+					$dateT->format($datetimeFormat);
+					$articleUpdated->setDateDeleted($dateT);					
+				}
+
+				$form=$this->createForm(ArticleType::class, $articleUpdated);
+				$form->handleRequest($request);
+
+				if($form->isSubmitted()&&$form->isValid())
+				{
+					$dateCreated=$articleUpdated->getDateCreated();
+					$dateDeleted=$articleUpdated->getDateDeleted();
+
+					$dateCreated=$dateCreated->getTimeStamp();
+					$dateDeleted=$dateDeleted->getTimeStamp();
+
+					$articleUpdated->setDateCreated($dateCreated);
+					$articleUpdated->setDateDeleted($dateDeleted);
+					$em->flush();
+					$session->getFlashBag()->add('succes', $articleUpdated->getTitle(). ' a bien été mis à jour !');
+
+					if($form->get('saveAndAdd')->isClicked())
+					{
+						return $this->redirectToRoute('back_office_photo_upload', array('idArticle'=>$articleUpdated->getId()));
+					}
+					else
+					{
+						return $this->redirectToRoute('back_office_article_list');						
+					}
+				}
+			}
+			else
+			{
+				throw new NotFoundHttpException("Cet article n\'existe pas !");
+			}
+		}
+		else
+		{
+			throw new NotFoundHttpException("Cet article n\'existe pas !");
+		}	
+
+		return $this->render('BackOfficeBundle:Article:update.html.twig',
+			array('form'=>$form->createView(),
+			 	  'article'=>$articleUpdated));
+	}
 }
