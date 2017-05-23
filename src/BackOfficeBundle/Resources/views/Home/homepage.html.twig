@@ -125,7 +125,7 @@
                                 </li>
                                 <li><a href="#settings-pills" data-toggle="tab">Revue de presse</a>
                                 </li>
-                                <li><a href="#settings-pills" data-toggle="tab">Collectivités</a>
+                                <li><a href="#collect-pills" data-toggle="tab">Collectivités</a>
                                 </li>
                             </ul>
 
@@ -199,7 +199,7 @@
                                     {% endif %}
                                     <a href="{{ path('back_office_article_create',{origin:4}) }}" title="Créer un article en page d'accueil"><button class="btn btn-info">Créer</button></a>
                                 </div>
-                                 <div class="tab-pane fade" id="settings-pills">
+                                 <div class="tab-pane fade" id="collect-pills">
                                     {% if articles is not null and articles is not empty %}
                                         {% for article in articles %}
                                             {% if article.origin == 5 %}

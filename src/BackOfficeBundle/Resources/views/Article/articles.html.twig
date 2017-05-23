@@ -37,7 +37,7 @@
                                         <td>
                                         	{{ article.main[:150]|raw }}
 	                                        	{% if article.main|length > 150 %}
-	                                        		<a href="#">Lire l'article</a>
+	                                        		<a href="{{ path('back_office_article_edit',{idArticle:article.id}) }}">Lire l'article</a>
 	                                        	{% endif %}
                                         </td>
                                         <td class="center">{{ article.dateCreated |date('d-m-Y') }}</td>
